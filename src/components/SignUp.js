@@ -21,8 +21,8 @@ export default function SignUp() {
   function handleForm(e){
     e.preventDefault();
     setDisabled(true);
-    const promisse = singUp(formInf);
-    promisse
+    const promise = singUp(formInf);
+    promise
       .then(() => navigate("/"))
       .catch(() => {
         alert("Erro ao criar usuário!");

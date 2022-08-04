@@ -5,6 +5,7 @@ import Login from "./Login";
 import SignUp from "./SignUp";
 import Habits from "./Habits";
 import Today from "./Today"
+import Historic from "./Historic";
 
 export default function App() {
   return (
@@ -25,6 +26,13 @@ export default function App() {
             element={
               <PrivatePage>
                 <Habits />
+              </PrivatePage>
+            }
+          />
+          <Route path="/historico"
+            element={
+              <PrivatePage>
+                <Historic />
               </PrivatePage>
             }
           />

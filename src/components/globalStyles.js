@@ -2,8 +2,6 @@ import { createGlobalStyle } from 'styled-components';
  
 const GlobalStyle = createGlobalStyle`
 
-@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&family=Playball&display=swap');
-
   html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -64,7 +62,10 @@ a {
     font-family: 'Lexend Deca', sans-serif;
 	display: flex;
 	justify-content: center;
-	//font-family: 'Playball', cursive;
+  }
+  .root {
+	height: 100%;
+    width: 100%;
   }
   
 `;

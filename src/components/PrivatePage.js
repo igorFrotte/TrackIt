@@ -1,4 +1,5 @@
 import Header from "./Header";
+import Menu from "./Menu";
 
 const HOURS_2 = 1000 * 60 * 60 * 2; // time until token expires
 
@@ -23,6 +24,7 @@ export default function PrivatePage({ children }) {
       <>
         <Header />
         {children}
+        <Menu />
       </>
     );
   } else {

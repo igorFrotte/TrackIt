@@ -21,14 +21,14 @@ export default function Login() {
   function handleForm(e){
     e.preventDefault();
     setDisabled(true);
-    const promisse = login(formInf);
-    promisse
+    const promise = login(formInf);
+    promise
       .then((r) => {
-        const obj = {token: r.data.token, timeStamp: +new Date()}
+        const obj = {token: r.data.token, timeStamp: +new Date(), image: r.data.image};
         localStorage.setItem("trackItUser", JSON.stringify(obj));
         navigate("/hoje");
       })
-      .catch((r) => {
+      .catch(() => {
         alert("Erro ao logar!");
         setDisabled(false);
       });  
@@ -49,7 +49,7 @@ export default function Login() {
             />
             <TemplateButton disabled={disabled} height="45" width="300" type="submit" >
               {disabled? <ThreeDots color="#ffffff" height={40} width={50}/> : "Entrar"}
-              </TemplateButton>
+            </TemplateButton>
           </form>
           <Link to="/cadastro" ><p>Não tem uma conta? Cadastre-se!</p></Link>
         </Auth>

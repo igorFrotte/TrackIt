@@ -73,4 +73,33 @@ const TemplateInput = styled.input`
     }
 `;
 
-export {Auth, TemplateButton, TemplateInput};
+const BackGroung = styled.div`
+    background: #E5E5E5;
+    height: 100vh;
+    width: 100%;
+    padding: 100px 18px;
+`;
+
+const DayBt = styled.button`
+    width: 30px;
+    height: 30px;
+    background: #FFFFFF;
+    border: 1px solid #D5D5D5;
+    border-radius: 5px;
+    font-size: 20px;
+    line-height: 25px;
+    color: #DBDBDB;
+    cursor: pointer;
+    margin: 8px 5px 20px 0;
+    ${props => {
+        if(props.clicked === true){
+            return `
+            background: #CFCFCF;
+            border: 1px solid #CFCFCF;
+            color: #FFFFFF;
+            `; 
+        }
+    }}
+`;
+
+export { DayBt, BackGroung, Auth, TemplateButton, TemplateInput};

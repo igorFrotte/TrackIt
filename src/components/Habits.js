@@ -1,15 +1,29 @@
-//import { useEffect } from "react";
-//import { create } from "./tracktiService";
+import { useEffect, useState } from "react";
+import { BackGroung } from "../assets/styles/styledComponents";
+import { listHabits } from "../services/axiosService";
+import CreateHabit from "./CreateHabit";
 
 export default function Habits() {
+
+  const [habits, setHabits] = useState([]);
   
-  /* useEffect(() => {
-    const promise = create({});
-  }, []); */
+  useEffect(() => {
+    renderHabits();
+  }, []); 
+
+  function renderHabits(){
+    const promise = listHabits();
+    promise
+      .then((r) => {
+        setHabits(r.data);
+        console.log(r.data);
+      })
+      .catch(() => alert("algo deu errado..."));
+  }
 
   return (
-    <>
-      <h1>Habits</h1>
-    </>
+    <BackGroung>
+      <CreateHabit renderHabits={renderHabits} />
+    </BackGroung>
   );
 }

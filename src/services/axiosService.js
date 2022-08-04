@@ -3,7 +3,7 @@ import axios from "axios";
 const BASE_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/";
 
 function createHeader() {
-  const auth = localStorage.getItem("trackItUser");
+  const auth = JSON.parse(localStorage.getItem("trackItUser"));
   const config = {
     headers: { Authorization: `Bearer ${auth.token}` }
   };
@@ -20,11 +20,16 @@ function login(body) {
   return promise;
 }
 
-/* 
-function create(body) {
-  const config = createHeader();
-  const promise = axios.post(`${BASE_URL}/habits`, body, config);
+function createHabit(body) {
+  const header = createHeader();
+  const promise = axios.post(BASE_URL + "habits", body, header);
   return promise;
-} */
+} 
 
-export { singUp, login };
+function listHabits() {
+  const header = createHeader();
+  const promise = axios.get(BASE_URL + "habits", header);
+  return promise;
+}
+
+export { listHabits, createHabit, singUp, login };
