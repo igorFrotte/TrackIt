@@ -10,10 +10,10 @@ function createHeader() {
   return config;
 }
 
-/* function singUp(body) {
-  const promise = axios.post(BASE_URL, body);
+function singUp(body) {
+  const promise = axios.post(BASE_URL + "auth/sign-up", body);
   return promise;
-} */
+}
 /* 
 function create(body) {
   const config = createHeader();
@@ -21,4 +21,4 @@ function create(body) {
   return promise;
 } */
 
-/* export { singUp, create }; */
+export { singUp };

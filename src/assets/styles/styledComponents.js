@@ -24,6 +24,20 @@ const Auth = styled.div`
         color: #52B6FF;
         margin-top: 25px;
     }
+    ${props => {
+        if(props.disabled === true){
+            return `
+                input {
+                    background: #F2F2F2;
+                    color: #AFAFAF;
+                }
+                button {
+                    opacity: 0.7;
+                    cursor: initial;
+                }
+            `; 
+        }
+    }}
 `;
 
 const TemplateButton = styled.button`
@@ -33,9 +47,15 @@ const TemplateButton = styled.button`
     border-radius: 5px;
     font-size: 20px;
     line-height: 26px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: #FFFFFF;
     cursor: pointer;
+
+    svg {
+        margin-top: 30px;
+    }
 `;
 
 const TemplateInput = styled.input`
