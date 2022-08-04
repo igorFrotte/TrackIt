@@ -91,6 +91,7 @@ export default function CreateHabit( {renderHabits} ) {
 }
 
 const Create = styled.div`
+    min-width: 335px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -99,7 +100,7 @@ const Create = styled.div`
     color: #126BA5;
 `;
 const New = styled.div`
-    width: 335px;
+    min-width: 335px;
     background: #FFFFFF;
     border-radius: 5px;
     padding: 18px;

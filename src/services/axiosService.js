@@ -32,4 +32,10 @@ function listHabits() {
   return promise;
 }
 
-export { listHabits, createHabit, singUp, login };
+function deleteHabit(id) {
+  const header = createHeader();
+  const promise = axios.delete(BASE_URL + "habits/" + id, header);
+  return promise;
+}
+
+export { deleteHabit, listHabits, createHabit, singUp, login };

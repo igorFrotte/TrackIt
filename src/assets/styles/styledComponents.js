@@ -76,8 +76,11 @@ const TemplateInput = styled.input`
 const BackGroung = styled.div`
     background: #E5E5E5;
     height: 100vh;
-    width: 100%;
+    width: 100vw;
     padding: 100px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
 
 const DayBt = styled.button`
@@ -89,8 +92,7 @@ const DayBt = styled.button`
     font-size: 20px;
     line-height: 25px;
     color: #DBDBDB;
-    cursor: pointer;
-    margin: 8px 5px 20px 0;
+    margin: 8px 5px 10px 0;
     ${props => {
         if(props.clicked === true){
             return `
@@ -98,6 +100,13 @@ const DayBt = styled.button`
             border: 1px solid #CFCFCF;
             color: #FFFFFF;
             `; 
+        }
+    }}
+    ${props => {
+        if(props.disabled !== true){
+            return `
+            cursor: pointer;
+            `;
         }
     }}
 `;
