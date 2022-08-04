@@ -14,6 +14,12 @@ function singUp(body) {
   const promise = axios.post(BASE_URL + "auth/sign-up", body);
   return promise;
 }
+
+function login(body) {
+  const promise = axios.post(BASE_URL + "auth/login", body);
+  return promise;
+}
+
 /* 
 function create(body) {
   const config = createHeader();
@@ -21,4 +27,4 @@ function create(body) {
   return promise;
 } */
 
-export { singUp };
+export { singUp, login };

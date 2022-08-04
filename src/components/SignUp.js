@@ -24,13 +24,11 @@ export default function SignUp() {
     const promisse = singUp(formInf);
     promisse
       .then(() => navigate("/"))
-      .catch((r) => {
+      .catch(() => {
         alert("Erro ao criar usuário!");
         setDisabled(false);
-      });
-      
+      });   
   }
-
 
     return (
       <>
