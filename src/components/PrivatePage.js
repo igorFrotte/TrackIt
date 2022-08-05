@@ -20,6 +20,11 @@ export default function PrivatePage({ children }) {
   const timeLogged = auth.timeStamp;
 
   if (now - timeLogged <= HOURS_2) {
+
+    if(children.type.name === "Today"){
+      console.log("oi");
+    }
+
     return (
       <>
         <Header />

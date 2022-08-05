@@ -38,4 +38,16 @@ function deleteHabit(id) {
   return promise;
 }
 
-export { deleteHabit, listHabits, createHabit, singUp, login };
+function listToday() {
+  const header = createHeader();
+  const promise = axios.get(BASE_URL + "habits/today", header);
+  return promise;
+}
+
+function markItem(id, status) {
+  const header = createHeader();
+  const promise = axios.post(BASE_URL + "habits/"+ id +"/"+ status, {}, header);
+  return promise;
+}
+
+export { markItem, listToday, deleteHabit, listHabits, createHabit, singUp, login };

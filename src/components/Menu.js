@@ -1,26 +1,36 @@
-import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
+import { buildStyles, CircularProgressbar, CircularProgressbarWithChildren } from "react-circular-progressbar";
+import UserContext from "../services/UserContext";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useContext } from "react";
 
 export default function Menu() {
+
+  const { progress } = useContext(UserContext);
+
     return (
         <>
             <Bot>
                 <Link to="/habitos" ><p>Hábitos</p></Link>
-                <Circle>
-                    <CircularProgressbar
-                        value={54}
-                        text={<Link to="/hoje" >Hoje</Link>}
-                        background
-                        backgroundPadding={6}
-                        styles={buildStyles({
-                            backgroundColor: "#52B6FF",
-                            textColor: "#fff",
-                            pathColor: "#fff",
-                            strokeLinecap: "butt"
-                        })}
-                    />
-                </Circle>  
+                <Circle style={{ width: "90px", height: "90px", paddingBottom: "40px" }}>
+                  <CircularProgressbarWithChildren
+                    value={progress}
+                    background
+                    backgroundPadding={6}
+                    styles={buildStyles({
+                      backgroundColor: "#3e98c7",
+                      textColor: "#FFFFFF",
+                      pathColor: "#FFFFFF",
+                      trailColor: "transparent",
+                      textSize: "18px",
+                      pathTransitionDuration: 0.5
+                    })}
+                  >
+                    <div style={{ fontSize: 18, color: "#FFFFFF", marginTop: -15 }}>
+                    <Link to="/hoje" >Hoje</Link>
+                    </div>
+                  </CircularProgressbarWithChildren>
+                </Circle>
                 <Link to="/historico" ><p>Histórico</p></Link>
             </Bot>    
         </>
@@ -52,9 +62,4 @@ const Circle = styled.div`
   bottom: 15px;
   left: 50%;
   transform: translateX(-45px);
-  width: 90px;
-  height: 90px;
-  & > svg > text {
-    color: #FFFFFF;
-  }
 `;

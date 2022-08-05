@@ -53,8 +53,8 @@ export default function Habits() {
       {habits.map((e, ind) => {
         return (
           <ExtantHabits key={ind} >
-            <p>{habits[ind].name}</p>
-            {days.map((el, index) => <DayBt type="button" key={index} name={index+1} disabled={true} clicked={isMarked(index+1, ind)} >{el}</DayBt>)}
+            <p>{e.name}</p>
+            {days.map((el, index) => <DayBt type="button" key={index} name={index} disabled={true} clicked={isMarked(index, ind)} >{el}</DayBt>)}
             <ion-icon onClick={() => removeHabit(ind)} name="trash-outline"></ion-icon>
           </ExtantHabits>
         );

@@ -25,6 +25,7 @@ const Top = styled.div`
   background: #126BA5;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   padding: 0 10px 0 20px;
+  z-index: 1;
 
   img {
     width: 50px;

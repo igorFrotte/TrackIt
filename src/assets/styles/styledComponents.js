@@ -75,9 +75,9 @@ const TemplateInput = styled.input`
 
 const BackGroung = styled.div`
     background: #E5E5E5;
-    height: 100vh;
-    width: 100vw;
-    padding: 100px 18px;
+    min-height: 100vh;
+    width: 100%;
+    padding: 100px 0;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -74,7 +74,7 @@ export default function CreateHabit( {renderHabits} ) {
                 onChange={updateInfs}
                 />
                 <div>
-                    {days.map((e, index) => <DayBt type="button" key={index} name={index+1} disabled={disabled} onClick={updateDays} clicked={isClicked(index+1)} >{e}</DayBt>)}
+                    {days.map((e, index) => <DayBt type="button" key={index} name={index} disabled={disabled} onClick={updateDays} clicked={isClicked(index)} >{e}</DayBt>)}
                 </div>
                 <div>
                     <p onClick={() => setCreating(false)} >Cancelar</p>
