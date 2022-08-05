@@ -1,6 +1,8 @@
 //import { useEffect } from "react";
 //import { create } from "./tracktiService";
 
+import { BackGroung } from "../assets/styles/styledComponents";
+
 export default function Historic() {
   
     /* useEffect(() => {
@@ -9,7 +11,9 @@ export default function Historic() {
   
     return (
       <>
-        <h1>Historic</h1>
+        <BackGroung>
+          Historic
+        </BackGroung>
       </>
     );
   }

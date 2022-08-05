@@ -7,22 +7,16 @@ import UserContext from "../services/UserContext";
 export default function Today() {
 
   const [habits, setHabits] = useState([]);
-  const { setProgress } = useContext(UserContext);
+  const { updateProgress } = useContext(UserContext);
   
   useEffect(() => {
     renderToday();
   }, []);
 
-  const done = habits.filter((e) => e.done !== false);
-  const p = ((done.length)/(habits.length)) * 100;
-  setProgress(p);
-
   function renderToday(){
     const promise = listToday();
     promise
-      .then((r) => {
-        setHabits(r.data);
-      })
+      .then((r) => setHabits(r.data))
       .catch(() => alert("algo deu errado..."));
   }
 
@@ -36,6 +30,7 @@ export default function Today() {
     promise
       .then(() => {
         renderToday();
+        updateProgress();
       })
       .catch((r) => alert("algo deu errado..."));
   }

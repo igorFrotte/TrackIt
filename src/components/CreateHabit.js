@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
 import { DayBt, TemplateButton, TemplateInput } from "../assets/styles/styledComponents";
 import { ThreeDots } from  'react-loader-spinner';
 import { createHabit } from "../services/axiosService";
+import UserContext from "../services/UserContext";
 
 export default function CreateHabit( {renderHabits} ) {
 
+    const { updateProgress } = useContext(UserContext);
     const [disabled, setDisabled] = useState(false);
     const [creating, setCreating] = useState(false);
     const [formInf, setFormInf] = useState({name:"", days:[]});
@@ -44,6 +46,7 @@ export default function CreateHabit( {renderHabits} ) {
                 setCreating(false);
                 setFormInf({name:"", days:[]});
                 renderHabits();
+                updateProgress();
             })
             .catch(() => {
                 alert("Erro ao criar!");

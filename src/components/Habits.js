@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { BackGroung, DayBt } from "../assets/styles/styledComponents";
 import { deleteHabit, listHabits } from "../services/axiosService";
 import CreateHabit from "./CreateHabit";
+import UserContext from "../services/UserContext";
 
 export default function Habits() {
 
   const [habits, setHabits] = useState([]);
   const days = ["D", "S", "T", "Q", "Q", "S", "S"];
+  const { updateProgress } = useContext(UserContext);
   
   useEffect(() => {
     renderHabits();
@@ -33,7 +35,10 @@ export default function Habits() {
       const id = habits[i].id;
       const promise = deleteHabit(id);
       promise
-        .then(() => renderHabits())
+        .then(() => {
+          updateProgress();
+          renderHabits();
+        })
         .catch(() => alert("erro ao deletar."));
     }
   }

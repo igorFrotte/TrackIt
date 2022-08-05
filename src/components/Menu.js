@@ -1,4 +1,4 @@
-import { buildStyles, CircularProgressbar, CircularProgressbarWithChildren } from "react-circular-progressbar";
+import { buildStyles, CircularProgressbarWithChildren } from "react-circular-progressbar";
 import UserContext from "../services/UserContext";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -23,11 +23,12 @@ export default function Menu() {
                       pathColor: "#FFFFFF",
                       trailColor: "transparent",
                       textSize: "18px",
-                      pathTransitionDuration: 0.5
+                      pathTransitionDuration: 0.5,
+                      strokeLinecap: "round"
                     })}
                   >
-                    <div style={{ fontSize: 18, color: "#FFFFFF", marginTop: -15 }}>
-                    <Link to="/hoje" >Hoje</Link>
+                    <div style={{ fontSize: 18, color: "#FFFFFF", marginTop: -20 }}>
+                    <Link to="/hoje" ><span>Hoje</span></Link>
                     </div>
                   </CircularProgressbarWithChildren>
                 </Circle>
@@ -49,8 +50,13 @@ const Bot = styled.div`
   background: #FFFFFF;
   font-size: 18px;
   line-height: 22px;
-  color: #52B6FF;
-
+  
+  a {
+    color: #52B6FF;
+  }
+  a > span {
+    color: #FFFFFF;
+  }
   p {
     width: 80px;
     text-align: center;

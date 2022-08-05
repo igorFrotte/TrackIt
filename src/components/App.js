@@ -7,14 +7,30 @@ import SignUp from "./SignUp";
 import Habits from "./Habits";
 import Today from "./Today"
 import Historic from "./Historic";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { listToday } from "../services/axiosService";
 
 export default function App() {
 
   const [progress, setProgress] = useState(0);
 
+  useEffect(() => {
+    updateProgress();
+  }, []);
+  
+  function updateProgress(){
+    const promise = listToday();
+    promise
+      .then((r) => {
+        const done = r.data.filter((e) => e.done !== false);
+        const p = ((done.length)/(r.data.length)) * 100;
+        setProgress(p);
+      })
+      .catch(() => alert("algo deu errado..."));
+  }
+  
   return (
-    <UserContext.Provider value={{progress, setProgress}}>
+    <UserContext.Provider value={{progress, updateProgress}}>
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
