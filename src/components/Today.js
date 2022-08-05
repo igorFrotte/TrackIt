@@ -6,8 +6,12 @@ import UserContext from "../services/UserContext";
 
 export default function Today() {
 
+  const dayjs = require("dayjs");  
+  const day = dayjs().format("DD/MM");  
+  const weekDay = dayjs().format("d"); 
+  const days = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
   const [habits, setHabits] = useState([]);
-  const { updateProgress } = useContext(UserContext);
+  const { progress, updateProgress } = useContext(UserContext);
   
   useEffect(() => {
     renderToday();
@@ -32,15 +36,22 @@ export default function Today() {
         renderToday();
         updateProgress();
       })
-      .catch((r) => alert("algo deu errado..."));
+      .catch(() => alert("algo deu errado..."));
   }
   
     return (
       <>
         <BackGroung>
+          <Title>
+            <h3>{days[weekDay]}, {day}</h3>
+            {progress === 0 || isNaN(progress)? 
+              <h4>Nenhum hábito concluído ainda</h4>:
+              <p>{progress+"% dos hábitos concluídos"}</p>
+            }
+          </Title>
           {habits.map((e,index) => {
             let aux = false;
-            if(e.currentSequence === e.highestSequence && e.highestSequence !== 0){
+            if(e.currentSequence === e.highestSequence){
               aux = true;
             }
             return (
@@ -90,5 +101,26 @@ const TodayHbt = styled.div`
   }
   span {
     color: #8FC549;
+  }
+`;
+
+const Title = styled.div`
+width: 335px;
+margin-bottom: 25px;
+
+  h3 {
+    font-size: 23px;
+    line-height: 29px;
+    color: #126BA5;
+  }
+  p {
+    font-size: 18px;
+    line-height: 22px;
+    color: #8FC549;
+  }
+  h4 {
+    font-size: 18px;
+    line-height: 22px;
+    color: #BABABA;
   }
 `;
