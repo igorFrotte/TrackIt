@@ -50,4 +50,10 @@ function markItem(id, status) {
   return promise;
 }
 
-export { markItem, listToday, deleteHabit, listHabits, createHabit, singUp, login };
+function getHistoric() {
+  const header = createHeader();
+  const promise = axios.get(BASE_URL + "habits/history/daily", header);
+  return promise;
+}
+
+export { getHistoric, markItem, listToday, deleteHabit, listHabits, createHabit, singUp, login };
