@@ -25,7 +25,7 @@ export default function App() {
     promise
       .then((r) => {
         const done = r.data.filter((e) => e.done !== false);
-        const p = ((done.length)/(r.data.length)) * 100;
+        const p = Math.round((done.length/r.data.length) * 100);
         setProgress(p);
       })
       .catch(() => alert("algo deu errado..."));
