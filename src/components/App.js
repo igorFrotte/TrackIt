@@ -15,7 +15,9 @@ export default function App() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    updateProgress();
+    if(localStorage.getItem("trackItUser") !== null){
+      updateProgress();
+    }
   }, []);
   
   function updateProgress(){

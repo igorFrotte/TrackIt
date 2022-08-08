@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ReactComponent as Logo } from "../assets/imgs/logo.svg";
 import { Auth, TemplateInput, TemplateButton } from "../assets/styles/styledComponents";
 import { ThreeDots } from  'react-loader-spinner';
 import { login } from "../services/axiosService";
+import UserContext from "../services/UserContext";
 
 export default function Login() {
 
   const navigate = useNavigate();
   const [formInf, setFormInf] = useState({email:"", password:""});
   const [disabled, setDisabled] = useState(false);
+  const { updateProgress } = useContext(UserContext);
 
   function updateInfs(e){
     setFormInf({
@@ -26,6 +28,7 @@ export default function Login() {
       .then((r) => {
         const obj = {token: r.data.token, timeStamp: +new Date(), image: r.data.image};
         localStorage.setItem("trackItUser", JSON.stringify(obj));
+        updateProgress();
         navigate("/hoje");
       })
       .catch(() => {
