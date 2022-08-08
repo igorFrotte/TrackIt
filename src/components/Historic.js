@@ -18,8 +18,6 @@ export default function Historic() {
       .catch(() => alert("algo deu errado..."));
   },[]);
 
-  console.log(historic);
-
   if(noBonus){
     return (
       <BackGroung>
@@ -37,7 +35,7 @@ export default function Historic() {
           <Template>
             <h3>Histórico</h3>
             <div>
-              <Calendar 
+              <MyCalendar 
                 onChange={onChange} 
                 value={value} 
                 formatDay ={(locale, date) => dayjs(date).format('DD')}
@@ -66,11 +64,33 @@ export default function Historic() {
       border-radius: 10px;
       background-color: #ffffff;
       margin-top: 10px;
+      padding: 10px;
     }
     p {
       font-size: 18px;
       line-height: 22px;
       color: #666666;
       margin-top: 20px;
+    }
+  `;
+
+  const MyCalendar = styled(Calendar)`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    button {
+      background-color: #fff;
+      margin-right: 10px;
+    }
+    div {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .uncompleted {
+      background-color: aqua;
+      border-radius: 50%;
     }
   `;
